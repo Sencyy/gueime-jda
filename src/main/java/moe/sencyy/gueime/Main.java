@@ -3,6 +3,7 @@ package moe.sencyy.gueime;
 import io.github.cdimascio.dotenv.Dotenv;
 import moe.sencyy.gueime.Commands.calc;
 import moe.sencyy.gueime.Commands.gueime;
+import moe.sencyy.gueime.Commands.pergunta;
 import moe.sencyy.gueime.Interactions.bueneime;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -28,6 +29,7 @@ public class Main extends ListenerAdapter {
                 .addEventListeners(new bueneime())
                 .addEventListeners(new gueime())
                 .addEventListeners(new calc())
+                .addEventListeners(new pergunta())
                 .build().awaitReady();
 
         // Declaring slash commands
@@ -42,6 +44,10 @@ public class Main extends ListenerAdapter {
                     .addOption(OptionType.INTEGER, "num1", "numero 1", true)
                     .addOption(OptionType.STRING, "sinal", "sinal de mais menos etc", true)
                     .addOption(OptionType.INTEGER, "num2", "numero 2", true)
+                    .queue();
+
+            guild.upsertCommand("pergunta", "faça uma pergunta ao bot")
+                    .addOption(OptionType.STRING, "pergunta", "sua pergunta", true)
                     .queue();
         } else {
             System.out.println("ERROR: Invalid guild ID!");
