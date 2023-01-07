@@ -37,8 +37,8 @@ public class calc extends ListenerAdapter {
                 result = Integer.toString(tempResult);
                 event.reply(Integer.toString(firstNumber) + " / " + Integer.toString(secondNumber) + " = " + result).queue();
             } else {
-                result = "ERROR: Invalid Operator!";
-                event.reply(result).queue();
+                result = "Operador Inválido!";
+                event.reply(result).setEphemeral(true).queue();
             }
 
 
