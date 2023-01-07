@@ -5,6 +5,7 @@ import moe.sencyy.gueime.Commands.calc;
 import moe.sencyy.gueime.Commands.gueime;
 import moe.sencyy.gueime.Commands.pergunta;
 import moe.sencyy.gueime.Interactions.bueneime;
+import moe.sencyy.gueime.Interactions.join;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -26,9 +27,11 @@ public class Main extends ListenerAdapter {
         JDA bot = JDABuilder.createDefault(token)
                 .setActivity(Activity.playing("sexo 2 the game"))
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new bueneime())
                 .addEventListeners(new gueime())
                 .addEventListeners(new calc())
+                .addEventListeners(new join())
                 .addEventListeners(new pergunta())
                 .build().awaitReady();
 
